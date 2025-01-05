@@ -1,21 +1,20 @@
-
-# Use Node.js official image
+# Use the official Node.js image
 FROM node:16
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to install dependencies first
+# Copy package.json and package-lock.json first to leverage Docker cache and speed up rebuilds
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies with increased timeout and clean cache
+RUN npm install --fetch-timeout=60000 --cache /tmp/empty-cache
 
-# Copy all the files into the container
+# Copy all the app files into the container
 COPY . .
 
-# Expose the port your app runs on
+# Expose the port the app runs on (make sure it's the correct port for your app)
 EXPOSE 5503
 
-# Run the app (replace with the entry point of your app, usually app.js or server.js)
+# Start the app (replace with your app entry point file)
 CMD ["node", "app.js"]
