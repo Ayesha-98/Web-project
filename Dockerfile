@@ -14,7 +14,7 @@ RUN npm install --fetch-timeout=60000 --cache /tmp/empty-cache
 COPY . .
 
 # Expose the port the app runs on (make sure it's the correct port for your app)
-EXPOSE 5503
+EXPOSE 5000
 
 # Start the app (replace with your app entry point file)
 CMD ["node", "app.js"]
