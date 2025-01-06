@@ -19,9 +19,8 @@ app.use(cors());
 // Use JSON parsing middleware to handle incoming requests with JSON payloads
 app.use(express.json());
 
-// Serve the index.html file from the "public" folder
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Serve static files from the "images" folder
