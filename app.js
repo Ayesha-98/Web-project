@@ -21,6 +21,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+   res.sendFile(path.join(__dirname, 'style.css'));
 });
 
 // Serve static files from the "images" folder
